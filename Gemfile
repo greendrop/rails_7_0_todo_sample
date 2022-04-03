@@ -69,3 +69,8 @@ group :development do
   # gem "spring"
 end
 
+gem 'devise', '~> 4.8.1'
+gem 'devise-i18n', '~> 1.10.2'
+gem 'kaminari', '~> 1.2.2'
+gem 'rails-i18n', '~> 7.0.3'
+gem 'slim-rails', '~> 3.4.0'
