@@ -1,6 +1,4 @@
 ja:
   layouts:
     application:
-      title: Rails 7.0 Todo Sample
     devise:
-      title: Rails 7.0 Todo Sample

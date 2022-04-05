@@ -1,7 +1,6 @@
 ja:
   shared:
     main_header:
-      title: Rails 7.0 Todo Sample
       sign_in: ログイン
       sign_out: ログアウト
       user_edit: ユーザー編集
