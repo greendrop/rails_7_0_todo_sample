@@ -1,0 +1,16 @@
+ul.navbar-nav
+  li.nav-item
+    = link_to '#', class: 'nav-link', data: { widget: 'pushmenu' }, role: 'button' do
+      i.fas.fa-bars
+
+ul.navbar-nav.ml-auto
+  - if user_signed_in?
+    li.nav-item.dropdown
+      = link_to  '#', class: 'nav-link', data: { toggle: 'dropdown' } do 
+        = User.model_name.human
+      .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+        = link_to t('.user_edit'), edit_user_registration_path, class: 'dropdown-item'
+        = link_to t('.sign_out'), destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
+  - else
+    li.nav-item
+      = link_to t('.sign_in'), new_user_session_path, class: 'nav-link'

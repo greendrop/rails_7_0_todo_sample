@@ -1,0 +1,9 @@
+ja:
+  users:
+    registrations:
+      new:
+        title: ユーザー登録
+        sign_up: ユーザー登録
+      edit:
+        title: ユーザー編集
+        cancel_my_account: ユーザー削除

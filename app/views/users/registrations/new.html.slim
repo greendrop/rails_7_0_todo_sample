@@ -1,0 +1,21 @@
+= content_for :content_header do
+  h1
+    = t('.title')
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }, builder: AdminLteFormBuilder) do |f|
+  = render 'shared/form_errors_base', resource: f.object
+
+  .form-group
+    = f.label :email
+    = f.email_field :email, placeholder: User.human_attribute_name(:email),
+      autofocus: true
+  .form-group
+    = f.label :password
+    = f.password_field :password, placeholder: User.human_attribute_name(:password)
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation)
+  .form-group
+    = f.submit t('.sign_up'), class: 'btn btn-primary'
+
+  = render "users/shared/links"

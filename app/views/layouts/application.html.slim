@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Rails 7.0 Todo Sample
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+  ruby:
+    body_class = 'hold-transition sidebar-mini'
+    body_class += ' sidebar-collapse' if cookies[:sidebar_collapse_state] == 'closed'
+  body class=body_class
+    .wrapper
+      header.main-header.navbar.navbar-expand.navbar-white.navbar-light
+        = render 'shared/main_header'
+      aside.main-sidebar.sidebar-dark-primary.elevation-4
+        = render 'shared/main_sidebar'
+      .content-wrapper
+        section.content-header
+          .container-fluid
+            = yield :content_header
+        section.content
+          .container-fluid
+            = render 'shared/flash'
+          .container-fluid
+            = yield
+      footer.main-footer
+        .container-fluid
+          = render 'shared/main_footer'

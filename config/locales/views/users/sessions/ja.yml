@@ -1,0 +1,6 @@
+ja:
+  users:
+    sessions:
+      new:
+        title: ログイン
+        sign_in: ログイン
