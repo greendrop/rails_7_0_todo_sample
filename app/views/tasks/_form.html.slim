@@ -1,26 +1,11 @@
-= form_with(model: @task) do |form|
-  - if @task.errors.any?
-    div style="color: red"
-      h2 = "#{pluralize(@task.errors.count, 'error')} prohibited this task from being saved:"
-      ul
-        - @task.errors.each do |error|
-          li = error.full_message
+.form-group
+  = f.label :title
+  = f.text_field :title
 
-  div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
+.form-group
+  = f.label :description
+  = f.text_area :description
 
-  div
-    = form.label :title, style: "display: block"
-    = form.text_field :title
-
-  div
-    = form.label :description, style: "display: block"
-    = form.text_area :description
-
-  div
-    = form.label :done, style: "display: block"
-    = form.check_box :done
-
-  div
-    = form.submit
+.form-group.form-check
+  = f.check_box :done
+  = f.check_label :done

@@ -1,10 +1,18 @@
-h1 Editing task
+= content_for :content_header do
+  .row
+    .col-sm-8
+      h1
+        = t('common.edit_title', model: Task.model_name.human)
+    .col-sm-4
+      .float-right
+        = link_to t('common.show'), task_path(id: @task.id), class: 'btn btn-secondary'
 
-== render "form", task: @task
-
-br
-
-div
-  => link_to "Show this task", @task
-  '|
-  =< link_to "Back to tasks", tasks_path
+.row
+  .col
+    = form_with(model: @task, builder: AdminLteFormBuilder) do |f|
+      .card
+        .card-body
+          = render "form", f: f
+        .card-footer
+          .form-group
+            = f.submit t('common.update'), class: 'btn btn-primary'

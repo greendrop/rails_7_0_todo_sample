@@ -1,10 +1,36 @@
-p style="color: green" = notice
+= content_for :content_header do
+  .row
+    .col-sm-8
+      h1
+        = t('common.show_title', model: Task.model_name.human)
+    .col-sm-4
+      .float-right
+        = link_to t('common.edit'), edit_task_path(id: @task.id), class: 'btn btn-secondary mr-2'
+        = link_to t('common.destroy'), task_path(id: @task.id), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: t('common.destroy_confirm') }
 
-== render @task
-
-div
-  => link_to "Edit this task", edit_task_path(@task)
-  '|
-  =< link_to "Back to tasks", tasks_path
-
-  = button_to "Destroy this task", @task, method: :delete
+.row
+  .col-sm-12
+    .card
+      .card-body.table-responsive.p-0
+        table.table.table-hover
+          tbody
+            tr
+              th.col-4
+                = Task.human_attribute_name(:id)
+              td.col-8
+                = @task.id
+            tr
+              th.col-4
+                = Task.human_attribute_name(:title)
+              td.col-8
+                = @task.title
+            tr
+              th.col-4
+                = Task.human_attribute_name(:description)
+              td.col-8
+                = nl2br(@task.description)
+            tr
+              th.col-4
+                = Task.human_attribute_name(:done)
+              td.col-8
+                = @task.done

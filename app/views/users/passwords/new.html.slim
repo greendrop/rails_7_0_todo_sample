@@ -3,14 +3,19 @@
     = t('.title')
 
 .row
-  .col-sm-12
+  .col
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form', role: 'form' }, builder: AdminLteFormBuilder) do |f|
       = render 'shared/form_errors_base', resource: f.object
 
-      .form-group
-        = f.email_field :email, class: 'form-control', placeholder: User.human_attribute_name(:email), autofocus: true
+      .card
+        .card-body
+          .form-group
+            = f.email_field :email, class: 'form-control', placeholder: User.human_attribute_name(:email), autofocus: true
 
-      .form-group
-        = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary'
+        .card-footer
+          .form-group
+            = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary'
 
-      = render "users/shared/links"
+.row
+  .col
+    = render "users/shared/links"

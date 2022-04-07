@@ -6,20 +6,7 @@
   nav.mt-2
     ul.nav.nav-pills.nav-sidebar.flex-column data-widget="treeview" role="menu" data-accordion="false"
       li.nav-item
-        a.nav-link href="#"
-          i.nav-icon.fas.fa-th
+        = link_to tasks_path, class: 'nav-link' do
+          i.nav-icon.fas.fa-list
           p
-            = "Simple Link"
-
-      li.nav-item
-        = link_to '#', class: 'nav-link' do
-          i.nav-icon.fas.fa-tachometer-alt
-          p
-            = "Starter Pages"
-            i.right.fas.fa-angle-left
-        ul.nav.nav-treeview
-          li.nav-item
-            a.nav-link href="#"
-              i.far.fa-circle.nav-icon
-              p
-                = "Active Page"
+            = Task.model_name.human

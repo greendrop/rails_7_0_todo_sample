@@ -1,11 +1,42 @@
-p style="color: green" = notice
+= content_for :content_header do
+  .row
+    .col-sm-8
+      h1
+        = t('common.list_title', model: Task.model_name.human)
+    .col-sm-4
+      .float-right
+        = link_to t('common.new'), new_task_path, class: 'btn btn-secondary'
 
-h1 Tasks
-
-#tasks
-  - @tasks.each do |task|
-    == render task
-    p
-      = link_to "Show this task", task
-
-= link_to "New task", new_task_path
+- if @tasks.present?
+  .row
+    .col
+      .card
+        .card-body.table-responsive.p-0
+          table.table.table-striped.table-hover
+            thead
+              tr
+                th.col-1
+                  = Task.human_attribute_name(:id)
+                th.col-4
+                  = Task.human_attribute_name(:title)
+                th.col-4
+                  = Task.human_attribute_name(:description)
+                th.col-1
+                  = Task.human_attribute_name(:done)
+                th.col-2
+            tbody
+              - @tasks.each do |task|
+                tr
+                  td
+                    = task.id
+                  td
+                    = task.title
+                  td
+                    = truncate(task.description)
+                  td
+                    = task.done
+                  td
+                    .float-right
+                      = link_to t('common.show'), task_path(id: task.id), class: 'btn btn-secondary'
+        .card-footer
+          = paginate @tasks, theme: 'admin_lte'

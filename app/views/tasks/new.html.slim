@@ -1,8 +1,15 @@
-h1 New task
+= content_for :content_header do
+  .row
+    .col
+      h1
+        = t('common.new_title', model: Task.model_name.human)
 
-== render "form", task: @task
-
-br
-
-div
-  = link_to "Back to tasks", tasks_path
+.row
+  .col
+    = form_with(model: @task, builder: AdminLteFormBuilder) do |f|
+      .card
+        .card-body
+          = render "form", f: f
+        .card-footer
+          .form-group
+            = f.submit t('common.create'), class: 'btn btn-primary'

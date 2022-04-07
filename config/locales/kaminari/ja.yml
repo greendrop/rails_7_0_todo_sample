@@ -1,0 +1,17 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      next: "&rsaquo;"
+      previous: "&lsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "%{entry_name}<span>%{total}</span>件(%{first}~%{last}件表示)"
+      one_page:
+        display_entries:
+          one: "%{entry_name}<span>%{count}</span>件(1~%{count}件表示)"
+          other: "%{entry_name}<span>%{count}</span>件(1~%{count}件表示)"
+          zero: "レコードが見つかりませんでした %{entry_name}"

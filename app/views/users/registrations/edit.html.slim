@@ -2,35 +2,39 @@
   h1
     = t('.title')
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }, builder: AdminLteFormBuilder ) do |f|
-  = render 'shared/form_errors_base', resource: f.object
+.row
+  .col
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }, builder: AdminLteFormBuilder ) do |f|
+      = render 'shared/form_errors_base', resource: f.object
 
-  .form-group
-    = f.label :email
-    = f.email_field :email, placeholder: User.human_attribute_name(:email),
-      autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      small.form-text.text-muted
-        = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+      .card
+        .card-body
+          .form-group
+            = f.label :email
+            = f.email_field :email, placeholder: User.human_attribute_name(:email),
+              autofocus: true
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              small.form-text.text-muted
+                = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
 
-  .form-group
-    = f.label :password
-    = f.password_field :password, placeholder: User.human_attribute_name(:password)
-    small.form-text.text-muted
-     | leave blank if you don't want to change it)
+          .form-group
+            = f.label :password
+            = f.password_field :password, placeholder: User.human_attribute_name(:password)
+            small.form-text.text-muted
+            | leave blank if you don't want to change it)
 
-  .form-group
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation)
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation)
 
-  .form-group
-    = f.label :current_password
-    = f.password_field :current_password, placeholder: User.human_attribute_name(:current_password)
-    small.form-text.text-muted
-      | we need your current password to confirm your changes
-
-  .form-group
-    = f.submit class: 'btn btn-primary'
+          .form-group
+            = f.label :current_password
+            = f.password_field :current_password, placeholder: User.human_attribute_name(:current_password)
+            small.form-text.text-muted
+              | we need your current password to confirm your changes
+        .card-footer
+          .form-group
+            = f.submit t('common.update'), class: 'btn btn-primary'
 
 hr
 
