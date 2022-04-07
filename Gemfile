@@ -54,8 +54,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-
-  gem 'letter_opener_web', '~> 2.0.0'
 end
 
 group :development do
@@ -69,6 +67,9 @@ group :development do
   # gem "spring"
 
   gem 'annotate', '~> 3.2.0'
+  gem 'better_errors', '~> 2.9.1'
+  gem 'binding_of_caller', '~> 1.0.0'
+  gem 'letter_opener_web', '~> 2.0.0'
 end
 
 gem 'devise', '~> 4.8.1'
