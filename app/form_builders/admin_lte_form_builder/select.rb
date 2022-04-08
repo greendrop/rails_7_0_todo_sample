@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class AdminLteFormBuilder
   module Select
     extend ActiveSupport::Concern
 
-    def select(method, choices = nil, options = {}, html_options = {}, &block)
+    def select(method, choices = nil, options = {}, html_options = {}, &)
       options = {
         error_options: {}
       }.merge(options)
@@ -13,7 +15,7 @@ class AdminLteFormBuilder
       super + error_message_on(error_attribute(method, error_options), error_options)
     end
 
-    def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+    def collection_select(method, collection, value_method, text_method, options = {}, html_options = {}) # rubocop:disable Metrics/ParameterLists
       options = {
         error_options: {}
       }.merge(options)

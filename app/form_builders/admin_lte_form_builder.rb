@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminLteFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
   include ActionView::Context
@@ -12,7 +14,7 @@ class AdminLteFormBuilder < ActionView::Helpers::FormBuilder
   include TextArea
   include TextField
 
-  def form_group(method, options = {}, &block)
+  def form_group(method, options = {}, &)
     error_attributes = options.delete(:error_attributes) || []
     error_attributes << method
     classes = ['form-group']
@@ -22,7 +24,7 @@ class AdminLteFormBuilder < ActionView::Helpers::FormBuilder
     options = {
       class: classes.join(' ')
     }.merge(options)
-    @template.content_tag(:div, nil, options, &block)
+    @template.content_tag(:div, nil, options, &)
   end
 
   private

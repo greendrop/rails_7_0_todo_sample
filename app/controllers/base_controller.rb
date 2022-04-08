@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseController < ApplicationController
   def page_param
     params[:page]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminLteFormBuilder
   module EmailField
     extend ActiveSupport::Concern

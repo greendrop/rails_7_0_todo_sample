@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 class TasksController < UserBaseController
-  before_action :find_task, only: %i[ show edit update destroy ]
+  before_action :find_task, only: %i[show edit update destroy]
 
   def index
     @tasks = Task.page(page_param).per(per_page_param)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @task = current_user.tasks.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @task = current_user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
+        format.html do
+          redirect_to task_url(@task), notice: I18n.t('common.create_success_message', model: Task.model_name.human)
+        end
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,7 +34,9 @@ class TasksController < UserBaseController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+        format.html do
+          redirect_to task_url(@task), notice: I18n.t('common.update_success_message', model: Task.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,7 +49,10 @@ class TasksController < UserBaseController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed.", status: :see_other }
+      format.html do
+        redirect_to tasks_url, notice: I18n.t('common.destroy_success_message', model: Task.model_name.human),
+                               status: :see_other
+      end
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminLteFormBuilder
   module TextField
     extend ActiveSupport::Concern
