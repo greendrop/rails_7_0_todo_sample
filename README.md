@@ -1,24 +1,20 @@
-# README
+# Rails 7.0 Todo Sample
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 7.0 を使用したTodoアプリのサンプルです。
 
-Things you may want to cover:
+## セットアップ
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```shell
+$ git clone git@github.com:greendrop/rails_7_0_todo_sample.git
+$ cd rails_7_0_todo_sample
+$ docker compose pull
+$ docker compose build
+$ docker compose run --rm app bash
+$ cp .env.example .env
+$ bundle install
+$ yarn install
+$ rake db:create
+$ rake db:migrate
+$ exit
+$ docker compose up
+```
