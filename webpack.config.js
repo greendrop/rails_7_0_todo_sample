@@ -1,6 +1,5 @@
 const path = require("path")
 const webpack = require("webpack")
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: "production",
@@ -21,7 +20,6 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
-    new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [
@@ -35,7 +33,16 @@ module.exports = {
       },
       {
         test: /\.(css|scss|sass)$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require("node-sass"),
+            }
+          },
+        ],
       }
     ]
   }

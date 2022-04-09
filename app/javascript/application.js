@@ -4,3 +4,5 @@ import "./controllers"
 
 import "./admin-lte"
 import "./fontawesome"
+
+import "./stylesheets/application.scss"
