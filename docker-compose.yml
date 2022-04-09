@@ -45,13 +45,6 @@ services:
     hostname: app_js
     tty: false
     stdin_open: false
-  app_css:
-    <<: *app_base
-    command: yarn build:css --watch
-    ports: []
-    hostname: app_js
-    tty: false
-    stdin_open: false
 
 volumes:
   mysql_volume:
