@@ -11,8 +11,8 @@ gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# Use mysql as the database for Active Record
+gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -81,6 +81,7 @@ end
 
 gem 'devise', '~> 4.8.1'
 gem 'devise-i18n', '~> 1.10.2'
+gem 'dotenv-rails', '~> 2.7.6'
 gem 'kaminari', '~> 1.2.2'
 gem 'rails-i18n', '~> 7.0.3'
 gem 'slim-rails', '~> 3.4.0'

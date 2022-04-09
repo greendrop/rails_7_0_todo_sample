@@ -8,10 +8,10 @@
 #
 # Name               | Type               | Attributes
 # ------------------ | ------------------ | ---------------------------
-# **`id`**           | `integer`          | `not null, primary key`
-# **`user_id`**      | `integer`          | `not null`
-# **`title`**        | `string`           |
-# **`description`**  | `text`             |
+# **`id`**           | `bigint`           | `not null, primary key`
+# **`user_id`**      | `bigint`           | `not null`
+# **`title`**        | `string(255)`      |
+# **`description`**  | `text(65535)`      |
 # **`done`**         | `boolean`          | `default(FALSE), not null`
 # **`created_at`**   | `datetime`         | `not null`
 # **`updated_at`**   | `datetime`         | `not null`
@@ -23,7 +23,7 @@
 #
 # ### Foreign Keys
 #
-# * `user_id`:
+# * `fk_rails_...`:
 #     * **`user_id => users.id`**
 #
 class Task < ApplicationRecord
