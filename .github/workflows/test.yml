@@ -35,15 +35,6 @@ jobs:
       - name: install yarn
         run: npm i -g yarn
 
-      - name: apt install
-        run: |
-          sudo apt update
-          sudo apt install -V -y \
-            ghostscript \
-            poppler-utils \
-            libgirepository1.0-dev \
-            libvips
-
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -72,6 +63,6 @@ jobs:
         run: |
           bundle exec rubocop --parallel
 
-      - name: rspec
-        run: |
-          bundle exec rspec
+      # - name: rspec
+      #   run: |
+      #     bundle exec rspec
