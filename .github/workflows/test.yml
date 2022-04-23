@@ -56,6 +56,7 @@ jobs:
 
       - name: bundle install
         run: |
+          gem install bundler -v 2.3.10
           bundle config path vendor/bundle
           bundle install --jobs=6 --retry=3
 
