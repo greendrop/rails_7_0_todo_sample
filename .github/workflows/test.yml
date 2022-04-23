@@ -1,0 +1,76 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOST: 127.0.0.1
+      DATABASE_PORT: 3306
+
+    services:
+      mysql:
+        image: mysql/mysql-server:8.0.28-1.2.7-server
+        env:
+          TZ: Asia/Tokyo
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_HOST: "%"
+        ports:
+          - 3306:3306
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.1
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: install yarn
+        run: npm i -g yarn
+
+      - name: apt install
+        run: |
+          sudo apt update
+          sudo apt install -V -y \
+            ghostscript \
+            poppler-utils \
+            libgirepository1.0-dev \
+            libvips
+
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: bundle install
+        run: |
+          bundle config path vendor/bundle --local
+          bundle install --jobs=6 --retry=3
+
+      - name: yarn install
+        run: |
+          yarn install --ignore-engines
+
+      - name: setup database
+        run: |
+          RAILS_ENV=test bundle exec rails db:setup
+
+      - name: rubocop
+        run: |
+          bundle exec rubocop --parallel
+
+      - name: rspec
+        run: |
+          bundle exec rspec
