@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      DB_USERNAME: root
-      DB_PASSWORD: password
-      DB_HOST: 127.0.0.1
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: password
+      DATABASE_HOST: 127.0.0.1
       DATABASE_PORT: 3306
 
     services:
