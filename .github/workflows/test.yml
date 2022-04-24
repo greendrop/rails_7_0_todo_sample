@@ -64,7 +64,7 @@ jobs:
 
       - name: rails assets:precompile
         run: |
-          rails assets:precompile
+          bundle exec rails assets:precompile
 
       - name: rspec
         run: |
