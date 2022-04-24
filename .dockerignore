@@ -1,0 +1,6 @@
+.bundle
+.git
+.gitignore
+docker
+node_modules
+public/assets/*
