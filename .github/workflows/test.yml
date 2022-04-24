@@ -62,6 +62,10 @@ jobs:
         run: |
           bundle exec rubocop --parallel
 
+      - name: rails assets:precompile
+        run: |
+          rails assets:precompile
+
       - name: rspec
         run: |
           bundle exec rspec
