@@ -45,27 +45,27 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: bundle install
+      - name: Run bundle install
         run: |
           bundle config path vendor/bundle --local
           bundle install --jobs=6 --retry=3
 
-      - name: yarn install
+      - name: Run yarn install
         run: |
           yarn install --ignore-engines
 
-      - name: setup database
+      - name: Run rails db:setup
         run: |
           RAILS_ENV=test bundle exec rails db:setup
 
-      - name: rubocop
+      - name: Run rubocop
         run: |
           bundle exec rubocop --parallel
 
-      - name: rails assets:precompile
+      - name: Run rails assets:precompile
         run: |
           bundle exec rails assets:precompile
 
-      - name: rspec
+      - name: Run rspec
         run: |
           bundle exec rspec
