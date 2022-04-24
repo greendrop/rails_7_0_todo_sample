@@ -57,6 +57,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
+  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.27.0', require: false
   gem 'rubocop-performance', '~> 1.13.3', require: false
   gem 'rubocop-rails', '~> 2.14.2', require: false
@@ -77,6 +79,10 @@ group :development do
   gem 'better_errors', '~> 2.9.1'
   gem 'binding_of_caller', '~> 1.0.0'
   gem 'letter_opener_web', '~> 2.0.0'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.1.0'
 end
 
 gem 'devise', '~> 4.8.1'

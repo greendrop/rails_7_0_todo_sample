@@ -42,6 +42,18 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Max: 50
 
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
 Style/AsciiComments:
   Enabled: false
 
